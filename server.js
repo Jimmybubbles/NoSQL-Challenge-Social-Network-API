@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3006;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
@@ -16,5 +16,6 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/social-network'
 });
 
 mongoose.set('debug', true)
+mongoose.set('strictQuery', false)
 
 app.listen(PORT, () => console.log(`Connected to localhost: ${PORT}`));
